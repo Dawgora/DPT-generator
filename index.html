@@ -3,47 +3,43 @@
 <head>
     <meta charset="utf-8">
     <title>DPT question generator</title>
-    <style>
-        .hidden {
-            visibility: hidden;
-        }
-        ul>li{
-            list-style-type: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/dank.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
+<div class="container">
+  <div id="app">
+      <h1>DPT jautājumu ģenerators</h1>
 
-<div id="app">
-    <h1>DPT jautājumu ģenerators</h1>
+      <div>
+          <p>Kura kursa jautājumi:</p>
 
-    <div>
-        <p>Kura kursa jautājumi:</p>
+          <ul>
+              <li v-for="exam in exams">
+                  <input @click="toggleCourse(exam)" type="checkbox">
+                  {{exam.name}}
+              </li>
+          </ul>
 
-        <ul>
-            <li v-for="exam in exams">
-                <input @click="toggleCourse(exam)" type="checkbox">
-                {{exam.name}}
-            </li>
-        </ul>
-
-    </div>
+      </div>
 
 
-    <div class="body">
-       <p> Jautājums:
-        <span>{{now.body}}</span>
-        <p v-if="!visible" @click="visible = !visible">Parādīt atbildi</p>
-        <!-- Ja visible ir false, tad parāda šo. plus, noklikšķinot uz parādīt atbildi visible ir true -->
-        <span v-else :class="{'hidden': !visible}"> <!-- pielīdzina klasei hidden boolean visible -->
-            {{now.answer}}
-        </span>
-       </p>
-    </div>
-    <button @click="getQuestion">Iegūt jautājumu</button>
+      <div class="body">
+         <p> Jautājums:
+          <span>{{now.body}}</span>
+          <hr><br>
+          <button v-if="!visible" @click="visible = !visible" type="button" name="button">Parādīt atbildi</button>
+          <!-- Ja visible ir false, tad parāda šo. plus, noklikšķinot uz parādīt atbildi visible ir true -->
+
+          <span v-else :class="{'hidden': !visible, 'bold': visible}"> <!-- pielīdzina klasei hidden boolean visible -->
+              {{now.answer}}
+          </span>
+         </p>
+      </div>
+      <button @click="getQuestion">Iegūt jautājumu</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js"></script>
+  <script src="js/main.js"></script>
+
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js"></script>
-<script src="main.js"></script>
-
 </body>
 </html>
