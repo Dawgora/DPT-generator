@@ -3,26 +3,45 @@
 <head>
     <meta charset="utf-8">
     <title>DPT question generator</title>
+    <style>
+        .hidden {
+            visibility: hidden;
+        }
+        ul>li{
+            list-style-type: none;
+        }
+    </style>
 </head>
 <body>
 
 <div id="app">
     <h1>DPT jautājumu ģenerators</h1>
-    <div class="body">
-        Jautājums:
-        <span>
-            {{now.question}}
-        </span>
+
+    <div>
+        <p>Kura kursa jautājumi:</p>
+
+        <ul>
+            <li v-for="exam in exams">
+                <input @click="toggleCourse(exam)" type="checkbox">
+                {{exam.name}}
+            </li>
+        </ul>
+
     </div>
 
+
+    <div class="body">
+       <p> Jautājums:
+        <span>{{now.body}}</span>
+        <p v-if="!visible" @click="visible = !visible">Parādīt atbildi</p>
+        <!-- Ja visible ir false, tad parāda šo. plus, noklikšķinot uz parādīt atbildi visible ir true -->
+        <span v-else :class="{'hidden': !visible}"> <!-- pielīdzina klasei hidden boolean visible -->
+            {{now.answer}}
+        </span>
+       </p>
+    </div>
+    <button @click="getQuestion">Iegūt jautājumu</button>
 </div>
-
-<template id="tasks-template">
-
-</template>
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js"></script>
 <script src="main.js"></script>
 
