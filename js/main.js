@@ -4,7 +4,7 @@ element = new Vue({
         exams: {
             first_exam:
             {
-                turnedOn: false,
+                turnedOn: true,
                 name    : 'DPT I',
                 question: [
                     {body: 'Divas būtiskākās datora komponentes augstākas veiktspējas nodrošināšanai.',
@@ -53,7 +53,7 @@ Bezsavienojuma (connectionless) pakešu komutācija – katra pakete iekļauj pi
 
             second_exam:
             {
-                turnedOn: false,
+                turnedOn: true,
                 name    : 'DPT II',
                 question: [
                 {body: 'Šis ir tests 21', answer: 'tests bija pareizs  21'},
@@ -64,7 +64,7 @@ Bezsavienojuma (connectionless) pakešu komutācija – katra pakete iekļauj pi
 
             third_exam:
             {
-                turnedOn: false,
+                turnedOn: true,
                 name    : 'DPT III',
                 question: [
                 {body: 'Šis ir tests 31', answer: 'tests bija pareizs 31'},
